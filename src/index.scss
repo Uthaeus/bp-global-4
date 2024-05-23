@@ -1,3 +1,14 @@
+@import 'bootstrap';
+@import 'bootstrap-icons';
+
+@import './styles/variables.scss';
+
+@import './styles/main-navigation.scss';
+
+@import './styles/home.scss';
+@import './styles/about.scss';
+@import './styles/contact.scss';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
