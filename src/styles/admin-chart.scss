@@ -5,4 +5,23 @@
     background-color: $lightGray;
     border-radius: 10px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.admin-orders-chart-header {
+    background-color: $black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.5rem 0;
+
+    .admin-orders-chart-header-item {
+        margin-left: 1rem;
+        display: flex;
+        justify-content: baseline;
+
+        .admin-orders-chart-header-item-title {
+            font-size: 1.2em;
+            color: $blue200;
+        }
+    }
 }
