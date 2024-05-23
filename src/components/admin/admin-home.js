@@ -1,8 +1,8 @@
 
 export default function AdminHome() {
     return (
-        <>
-            <h1>Admin Home</h1>
-        </>
+        <div className="admin-container">
+            <h1 className="admin-title">Admin Home</h1>
+        </div>
     )
 }

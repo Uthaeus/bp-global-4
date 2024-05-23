@@ -8,8 +8,8 @@ export default function AdminNewUser() {
     }
 
     return (
-        <div className="admin-new-user">
-            <h1 className="admin-new-user-title">Create New User</h1>
+        <div className="admin-container">
+            <h1 className="admin-title">Create New User</h1>
 
             <AdminUserForm />
         </div>

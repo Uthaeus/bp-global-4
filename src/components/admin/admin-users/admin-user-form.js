@@ -23,7 +23,7 @@ export default function AdminUserForm({ user }) {
                 {errors.name && <span className="text-danger">Name is required</span>}
             </div>
 
-            <div className="form-group mb-3">
+            <div className="form-group mb-4">
                 <label htmlFor="email">Email</label>
                 <input type="email" id="email" className="form-control" {...register("email", { required: true })} />
                 {errors.email && <span className="text-danger">Email is required</span>}

@@ -16,8 +16,8 @@ export default function AdminEditUser() {
     }, [users, id]);
 
     return (
-        <div className="admin-edit-user">
-            <h1 className="admin-edit-user-title">Edit User</h1>
+        <div className="admin-container">
+            <h1 className="admin-title">Edit User</h1>
             <AdminUserForm user={user} />
         </div>
     )
