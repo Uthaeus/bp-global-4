@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { UsersContext } from "../../../store/users-context";
 
@@ -9,10 +10,10 @@ export default function AdminUsers() {
             <h1 className="admin-users-title">Users</h1>
 
             {users.map((user) => (
-                <div className="admin-user" key={user.id}>
+                <Link to={`/admin/user/${user.id}`} className="admin-user" key={user.id}>
                     <p className="admin-user-name">{user.name}</p>
                     <p className="admin-user-email">{user.email}</p>
-                </div>
+                </Link>
             ))}
         </div>
     );

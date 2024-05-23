@@ -1,11 +1,7 @@
-import { useForm } from "react-hook-form";
+
+import AdminUserForm from "./admin-user-form";
 
 export default function AdminNewUser() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -15,7 +11,7 @@ export default function AdminNewUser() {
         <div className="admin-new-user">
             <h1 className="admin-new-user-title">Create New User</h1>
 
-            
+            <AdminUserForm />
         </div>
     )
 }

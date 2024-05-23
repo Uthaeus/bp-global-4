@@ -11,6 +11,8 @@ import Register from "./components/auth/register";
 import Error from "./components/error/error";
 import AdminUsers from "./components/admin/admin-users/admin-users";
 import AdminNewUser from "./components/admin/admin-users/admin-new-user";
+import AdminEditUser from "./components/admin/admin-users/admin-edit-user";
+import AdminUserDetail from "./components/admin/admin-users/admin-user-detail";
 
 const router = createBrowserRouter([
   {
@@ -54,8 +56,16 @@ const router = createBrowserRouter([
         element: <AdminUsers />,
       },
       {
-        path: "/admin/users/new",
+        path: "/admin/user/new",
         element: <AdminNewUser />,
+      },
+      {
+        path: "/admin/user/:id/edit",
+        element: <AdminEditUser />,
+      },
+      {
+        path: "/admin/user/:id",
+        element: <AdminUserDetail />,
       }
     ],
   }

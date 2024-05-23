@@ -8,11 +8,12 @@ export default function AdminMenu() {
         className={({ isActive }) =>
           isActive ? "admin-nav-link admin-link-active" : "admin-nav-link"
         }
+        end
       >
         Admin Home
       </NavLink>
       <NavLink
-        to="/admin/users/new"
+        to="/admin/user/new"
         className={({ isActive }) =>
           isActive ? "admin-nav-link admin-link-active" : "admin-nav-link"
         }
