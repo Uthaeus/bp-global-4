@@ -4,11 +4,15 @@
 
 @import './styles/variables.scss';
 
+@import './styles/admin-layout.scss';
+
 @import './styles/main-navigation.scss';
 
 @import './styles/home.scss';
 @import './styles/about.scss';
 @import './styles/contact.scss';
+@import './styles/error.scss';
+@import './styles/main-footer.scss';
 
 body {
   margin: 0;

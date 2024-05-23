@@ -1,0 +1,12 @@
+
+@import './admin-menu.scss';
+
+.admin-layout {
+    
+    .admin-layout-body {
+        min-height: calc(100vh - 90px);
+        background-color: $lightGray;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+}

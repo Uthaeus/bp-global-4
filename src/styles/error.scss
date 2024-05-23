@@ -1,0 +1,35 @@
+
+.error {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $black;
+
+    .error-title {
+        font-size: 3rem;
+        font-weight: 600;
+        color: $lightGray;
+    }
+
+    .error-btn {
+        margin-top: 20px;
+        padding: 8px 30px;
+        background-color: $blue200;
+        color: $black;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, font-weight 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+        &:hover {
+            background-color: $blue300;
+            font-weight: 700;
+            transform: scale(1.05);
+        }
+    }
+}
