@@ -1,8 +1,32 @@
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = async (data) => {
+        console.log(data);
+    }
+
     return (
-        <>
-            <h1>Login</h1>
-        </>
+        <div className="auth">
+            <h1 className="auth-title">Login</h1>
+
+            <form className="auth-form" onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group mb-3">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" {...register("email", { required: true })} />
+                    {errors.email && <span className="text-danger">Email is required</span>}
+                </div>
+
+                <div className="form-group mb-3">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" {...register("password", { required: true })} />
+                    {errors.password && <span className="text-danger">Password is required</span>}
+                </div>
+
+                <button type="submit" className="auth-btn">Login</button>
+            </form>
+        </div>
     )
 }
