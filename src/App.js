@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import AdminLayout from "./components/layouts/admin-layout";
+import AdminHome from "./components/admin/admin-home";
 import RootLayout from "./components/layouts/root-layout";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -21,6 +23,16 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminHome />,
       },
     ],
   }
