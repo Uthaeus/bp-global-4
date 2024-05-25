@@ -1,0 +1,65 @@
+
+.admin-order-detail {
+    padding: 2rem;
+    position: relative;
+
+    .admin-order-detail-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 3rem 0;
+
+        .admin-order-detail-header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-order-detail-header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .admin-order-detail-header-item {
+            font-size: 2em;
+            font-weight: 600;
+            color: $black;
+        }
+
+        .admin-order-detail-header-order-date {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: $black;
+        }
+    }
+
+    .admin-order-detail-body {
+        width: 90%;
+        margin: 3rem auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        .dummy-image {
+            width: 100%;
+            height: 200px;
+            background-color: $lightGray;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+            transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.8;
+                box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+
+    .admin-order-detail-actions {
+        display: flex;
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}

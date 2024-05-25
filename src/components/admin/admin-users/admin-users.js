@@ -5,6 +5,7 @@ import { UsersContext } from "../../../store/users-context";
 
 export default function AdminUsers() {
     const { users } = useContext(UsersContext);
+    
     return (
         <div className="admin-container">
             <h1 className="admin-title">Users</h1>

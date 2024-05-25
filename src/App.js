@@ -13,6 +13,8 @@ import AdminUsers from "./components/admin/admin-users/admin-users";
 import AdminNewUser from "./components/admin/admin-users/admin-new-user";
 import AdminEditUser from "./components/admin/admin-users/admin-edit-user";
 import AdminUserDetail from "./components/admin/admin-users/admin-user-detail";
+import AdminOrders from "./components/admin/admin-orders/admin-orders";
+import AdminOrderDetail from "./components/admin/admin-orders/admin-order-detail";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
       {
         path: "/admin/user/:id",
         element: <AdminUserDetail />,
+      },
+      {
+        path: "/admin/orders",
+        element: <AdminOrders />,
+      },
+      {
+        path: "/admin/orders/:id",
+        element: <AdminOrderDetail />,
       }
     ],
   }

@@ -10,18 +10,52 @@
 
 .admin-orders-chart-header {
     background-color: $black;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 0.5rem 0;
 
     .admin-orders-chart-header-item {
         margin-left: 1rem;
-        display: flex;
-        justify-content: baseline;
+        border-right: 1px solid white;
+
+        &:last-child {
+            border-right: none;
+        }
 
         .admin-orders-chart-header-item-title {
-            font-size: 1.2em;
-            color: $blue200;
+            margin-bottom: -0.01rem;
+            font-size: 1.4em;
+            color: white;
+        }
+    }
+}
+
+.admin-orders-chart-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-decoration: none;
+    border-bottom: 1px solid $black;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $blue100;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .admin-orders-chart-item-title {
+        margin-left: 2rem;
+        margin-bottom: -0.01rem;
+        font-size: 1.2em;
+        color: $black;
+        border-right: 1px solid $black;
+
+        &:last-child {
+            border-right: none;
         }
     }
 }
