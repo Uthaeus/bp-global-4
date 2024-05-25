@@ -59,3 +59,55 @@
         }
     }
 }
+
+.admin-users-chart-header {
+    background-color: $black;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .admin-users-chart-header-item {
+        margin-left: 1rem;
+        border-right: 1px solid white;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        .admin-users-chart-header-item-title {
+            margin-bottom: -0.01rem;
+            font-size: 1.4em;
+            color: white;
+        }
+    }
+}
+
+.admin-users-chart-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-decoration: none;
+    border-bottom: 1px solid $black;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $blue100;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .admin-users-chart-item-title {
+        margin-left: 2rem;
+        margin-bottom: -0.01rem;
+        font-size: 1.2em;
+        color: $black;
+        border-right: 1px solid $black;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
