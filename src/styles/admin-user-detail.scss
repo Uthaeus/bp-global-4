@@ -1,0 +1,91 @@
+
+.admin-user-detail {
+    padding: 3rem 18%;
+    min-height: calc(100vh - 90px);
+
+    .admin-user-detail-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        padding-bottom: 3rem;
+
+        .admin-user-detail-title {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: $black;
+        }
+
+        .admin-user-detail-email {
+            font-size: 2em;
+            font-weight: 600;
+            color: $black;
+        }
+
+        .admin-user-detail-edit {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: $black;
+            text-decoration: none;
+        }
+    }
+
+    .admin-user-detail-orders-title {
+        font-size: 2em;
+        font-weight: 600;
+        color: $black;
+        margin-bottom: 1rem;
+    }
+
+    .admin-user-detail-orders-container {
+        width: 80%;
+        margin: 3rem auto;
+
+        .admin-user-detail-orders-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: white;
+            background-color: $black;
+
+            .admin-user-detail-orders-header-item {
+                margin-left: 1rem;
+                margin-bottom: -0.01rem;
+                border-right: 1px solid white;
+
+                &:last-child {
+                    border-right: none;
+                }
+            }
+        }
+
+        .admin-user-detail-order-chart-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: $black;
+            border-bottom: 1px solid $black;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover {
+                background-color: $lightGray;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .admin-user-detail-chart-item-title {
+                margin-left: 2rem;
+                margin-bottom: -0.01rem;
+            }
+        }
+    }
+}
