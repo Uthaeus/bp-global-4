@@ -48,8 +48,9 @@ export default function AdminUserDetail() {
             </div>
 
             <div className="admin-user-detail-actions">
-                <Link to={`/admin/user/${id}/edit`}>Edit User</Link>
-
+                <button className="btn btn-danger mx-2">Delete User</button>
+                <Link to={`/admin/user/${id}/edit`} className="btn btn-info mx-2">Edit User</Link>
+                <Link to='/admin/users' className="btn btn-primary mx-2">Back</Link>
             </div>
         </div>
     );
