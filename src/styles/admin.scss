@@ -2,12 +2,19 @@
 .admin-container {
     min-height: calc(100vh - 90px);
     padding: 3rem 2rem;
+    position: relative;
 
     .admin-title {
         font-size: 2.5em;
         font-weight: 600;
         color: $black;
         margin-bottom: 4rem;
+    }
+
+    .admin-container-actions {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
     }
 }
 
@@ -22,7 +29,7 @@
     .admin-user-form-btn {
         padding: 4px 30px;
         background-color: $blue200;
-        color: $black;
+        color: white;
         text-decoration: none;
         border: none;
         border-radius: 5px;
