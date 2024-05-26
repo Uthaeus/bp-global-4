@@ -23,6 +23,12 @@ export const dummyUsers = [
         name: 'Company 4',
         email: 'uXUQw@example.com',
         role: 'user'
+    },
+    {
+        id: 55,
+        name: 'Mister Admin',
+        email: 'admin@me.com',
+        role: 'admin'
     }
 ];
 
