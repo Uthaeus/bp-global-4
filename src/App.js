@@ -15,6 +15,8 @@ import AdminEditUser from "./components/admin/admin-users/admin-edit-user";
 import AdminUserDetail from "./components/admin/admin-users/admin-user-detail";
 import AdminOrders from "./components/admin/admin-orders/admin-orders";
 import AdminOrderDetail from "./components/admin/admin-orders/admin-order-detail";
+import AdminNewOrder from "./components/admin/admin-orders/admin-new-order";
+import AdminEditOrder from "./components/admin/admin-orders/admin-edit-order";
 
 const router = createBrowserRouter([
   {
@@ -70,12 +72,20 @@ const router = createBrowserRouter([
         element: <AdminUserDetail />,
       },
       {
+        path: "/admin/user/:id/order/new",
+        element: <AdminNewOrder />,
+      },
+      {
         path: "/admin/orders",
         element: <AdminOrders />,
       },
       {
         path: "/admin/orders/:id",
         element: <AdminOrderDetail />,
+      },
+      {
+        path: "/admin/orders/:id/edit",
+        element: <AdminEditOrder />,
       }
     ],
   }

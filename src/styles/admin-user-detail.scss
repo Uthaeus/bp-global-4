@@ -9,6 +9,7 @@
         position: relative;
         padding-bottom: 3rem;
         margin-bottom: 3rem;
+        border-bottom: 1px solid $black;
 
         .admin-user-detail-title {
             font-size: 2.5em;
@@ -20,6 +21,12 @@
             font-size: 2em;
             font-weight: 600;
             color: $black;
+        }
+
+        .admin-user-detail-new-order {
+            position: absolute;
+            left: 0;
+            bottom: 0;
         }
 
         .admin-user-detail-edit {
@@ -41,7 +48,7 @@
     .admin-user-detail-orders-title {
         font-size: 2em;
         font-weight: 600;
-        color: $black;
+        color: $blue400;
         margin-bottom: 1rem;
     }
 

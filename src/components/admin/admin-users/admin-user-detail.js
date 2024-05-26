@@ -31,6 +31,7 @@ export default function AdminUserDetail() {
             <div className="admin-user-detail-header">
                 <h1 className="admin-user-detail-title">{user?.name}</h1>
                 <p className="admin-user-detail-email">{user?.email}</p>
+                <p className="admin-user-detail-new-order"><Link to={`/admin/user/${id}/order/new`} className="btn btn-primary">Create New Order</Link></p>
                 <Link to={`/admin/user/${id}/edit`} className="admin-user-detail-edit">Edit User</Link>
             </div>
 
