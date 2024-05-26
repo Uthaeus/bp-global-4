@@ -16,13 +16,13 @@ export default function AdminUserDetail() {
     const [userOrders, setUserOrders] = useState([]);
 
     useEffect(() => {
-        const user = users.find((user) => +user.id === +id);
+        const user = users.find((user) => user.id.toString() === id.toString());
         setUser(user);
     }, [users, id]);
 
     useEffect(() => {
         if (user) {
-            setUserOrders(orders.filter((order) => +order.uid === +user.id));
+            setUserOrders(orders.filter((order) => order.uid.toString() === user.id.toString()));
         }
     }, [user, orders]);
 
@@ -37,7 +37,9 @@ export default function AdminUserDetail() {
 
             <h2 className="admin-user-detail-orders-title">Orders</h2>
 
-            <div className="admin-user-detail-orders-container">
+            {userOrders.length === 0 && <p className="admin-user-detail-no-orders">No Orders To Display</p>}
+
+            {userOrders.length > 0 && <div className="admin-user-detail-orders-container">
                 <div className="admin-user-detail-orders-header">
                     <p className="admin-user-detail-orders-header-item">Order Number</p>
                     <p className="admin-user-detail-orders-header-item">Order Date</p>
@@ -46,7 +48,7 @@ export default function AdminUserDetail() {
                 {userOrders.map((order) => (
                     <AdminUserDetailChartItem key={order.id} order={order} />
                 ))}
-            </div>
+            </div>}
 
             <div className="admin-user-detail-actions">
                 <button className="btn btn-danger mx-2">Delete User</button>

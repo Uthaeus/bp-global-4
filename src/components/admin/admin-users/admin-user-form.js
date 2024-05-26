@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router";
+
+import { UsersContext } from "../../../store/users-context";
 
 export default function AdminUserForm({ user }) {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+    const { addUser, updateUser } = useContext(UsersContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
@@ -12,7 +19,28 @@ export default function AdminUserForm({ user }) {
     }, [user, reset]);
 
     const onSubmit = async (data) => {
-        console.log(data);
+        console.log('user form submit', data);
+        const date = new Date();
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+
+        try {
+
+            if (user) {
+                data.updated_at = formattedDate;
+                updateUser(data);
+                console.log('updating user', data);
+            } else {
+                data.id = Math.random().toString(36).substring(2, 9);
+                data.created_at = formattedDate;
+                addUser(data);
+                console.log('adding user', data);
+            }
+        } catch (error) {
+            console.log('user form submit error',error);
+        } finally {
+            navigate('/admin/users');
+        }
     }
 
     return (

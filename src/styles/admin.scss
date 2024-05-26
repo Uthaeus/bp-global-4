@@ -5,10 +5,13 @@
     position: relative;
 
     .admin-title {
+        width: max-content;
         font-size: 2.5em;
         font-weight: 600;
         color: $black;
+        padding-right: 2rem;
         margin-bottom: 4rem;
+        border-bottom: 2px solid $black;
     }
 
     .admin-container-actions {

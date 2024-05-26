@@ -12,7 +12,7 @@ export default function AdminNewOrder() {
     const { id } = useParams();
 
     useEffect(() => {
-        const u = users.find((user) => +user.id === +id);
+        const u = users.find((user) => user.id === id);
         setUser(u);
     }, [users, id]);
 

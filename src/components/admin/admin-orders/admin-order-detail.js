@@ -10,7 +10,7 @@ export default function AdminOrderDetail() {
     const [order, setOrder] = useState({});
 
     useEffect(() => {
-        const order = orders.find((order) => +order.id === +id);
+        const order = orders.find((order) => order.id.toString() === id.toString());
         setOrder(order);
     }, [orders, id]);
 

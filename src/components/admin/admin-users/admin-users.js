@@ -13,6 +13,10 @@ export default function AdminUsers() {
             <h1 className="admin-title">Users</h1>
 
             <AdminChart type="users" data={users} />
+
+            <div className="admin-container-actions">
+                <Link to='/admin' className="btn btn-primary">Back to Dashboard</Link>
+            </div>
         </div>
     );
 }
