@@ -17,6 +17,8 @@ import AdminOrders from "./components/admin/admin-orders/admin-orders";
 import AdminOrderDetail from "./components/admin/admin-orders/admin-order-detail";
 import AdminNewOrder from "./components/admin/admin-orders/admin-new-order";
 import AdminEditOrder from "./components/admin/admin-orders/admin-edit-order";
+import Account from "./account/account";
+import AccountOrderDetail from "./account/account-order-detail";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
+      },
+      {
+        path: "/account/orders/:id",
+        element: <AccountOrderDetail />,
       }
     ],
   },

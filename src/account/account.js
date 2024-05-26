@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom";
 
-import { UserContext } from "../context/user-context";
+import { UserContext } from "../store/user-context";
 import { OrdersContext } from "../store/orders-context";
 
 import AccountOrderItem from "./account-order-item";
