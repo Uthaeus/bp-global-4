@@ -1,0 +1,104 @@
+
+.account {
+    min-height: calc(100vh - 90px);
+    padding: 3rem 8%;
+    position: relative;
+
+    .account-header {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 1rem 0;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid $black;
+
+        .account-title {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: $black;
+        }
+
+        .account-email {
+            font-size: 1.5em;
+            color: $black;
+        }
+
+        .account-edit {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: $blue200;
+            transition: color 0.3s ease-in-out;
+
+            &:hover {
+                color: $blue300;
+            }
+        }
+    }
+
+    .account-orders-title {
+        width: max-content;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: $blue400;
+        border-bottom: 2px solid $blue400;
+        padding-right: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .account-orders-empty {
+        font-size: 1.2em;
+        color: $black;
+        text-align: center;
+    }
+
+    .account-orders-container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+        background-color: $lightGray;
+
+        .account-orders-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            font-size: 1.2em;
+            color: $black;
+            border-bottom: 1px solid $black;
+
+            .account-orders-header-item {
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    .account-actions {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
+
+// account order item
+
+.account-order-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid $black;
+    text-decoration: none;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .account-order-item-item {
+        margin-left: 2rem;
+        font-size: 1.2em;
+        color: $black;
+    }
+}
