@@ -1,16 +1,28 @@
 import { useForm } from "react-hook-form"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { useNavigate } from "react-router";
 
-export default function AdminOrderForm({ order }) {
+import { OrdersContext } from "../../../store/orders-context";
+
+export default function AdminOrderForm({ order, user }) {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [orderImages, setOrderImages] = useState([]);
 
+    const navigate = useNavigate();
+
+    const { addOrder, updateOrder } = useContext(OrdersContext);
+
     useEffect(() => {
         if (order) {
             reset(order);
+        } else {
+            reset({
+                uid: user.id,
+                customer_name: user.name
+            });
         }
-    }, [order, reset]);
+    }, [order, reset, user]);
 
     const addImageHandler = (event) => {
 
@@ -23,8 +35,33 @@ export default function AdminOrderForm({ order }) {
         setOrderImages(orderImages.filter((image) => image !== img));
     }
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const date = new Date();
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+
+        try {
+
+            const orderObj = {
+                ...data,
+                images: orderImages
+            }
+
+            if (order) {
+                orderObj.updated_at = formattedDate;
+                updateOrder(orderObj);
+                console.log('edited order submitted', orderObj);
+            } else {
+                orderObj.id = new Date().getTime();
+                orderObj.created_at = formattedDate;
+                addOrder(orderObj);
+                console.log('order submitted', orderObj);
+            }
+        } catch (error) {
+            console.log('order submit error',error);
+        } finally {
+            navigate(`/admin/user/${data.uid}`);
+        }
     }
 
     return (
@@ -32,8 +69,11 @@ export default function AdminOrderForm({ order }) {
 
             <div className="form-group mb-3">
                 <label htmlFor="customer_name">Customer Name</label>
-                <input type="text" id="customer_name" className="form-control" {...register("customer_name", { required: true })} />
-                {errors.customer_name && <span className="text-danger">Customer Name is required</span>}
+                <input type="text" id="customer_name" className="form-control" {...register("customer_name")} disabled={true} />
+            </div>
+
+            <div className="d-none">
+                <input type="text" id="uid" className="form-control" {...register("uid")} />
             </div>
 
             <div className="form-group mb-3">
@@ -49,6 +89,7 @@ export default function AdminOrderForm({ order }) {
             </div>
 
             <div className="order-form-images">
+                {orderImages.length === 0 && <p>No images added</p>}
                 {orderImages.map((image, index) => (
                     <div key={index} className="order-form-image-wrapper">
                         <img src={image} alt="order image" className="order-form-image" />

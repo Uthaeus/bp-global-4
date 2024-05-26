@@ -40,7 +40,7 @@ const OrdersContextProvider = ({ children }) => {
 
     const updateOrder = (order) => {
         // add firestore update
-        setOrders(orders.map(o => o.id === order.id ? order : o));
+        setOrders(orders.map(o => +o.id === +order.id ? order : o));
     }
 
     const value = {
