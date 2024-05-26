@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { OrdersContext } from "../../../store/orders-context";
-import image from '../../../assets/images/globe.png';
+import image from '../../../assets/images/overtime_image2_tn.jpg';
 
 import AdminOrderModal from "./admin-order-modal";
 
@@ -49,7 +49,7 @@ export default function AdminOrderDetail() {
 
                 {orderImages.map((image, index) => (
                     <div key={index} className="dummy-image" onClick={() => openModalHandler(image)}>
-                        <img src={image} alt="order-image" />
+                        <img src={image} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
                     </div>
                 ))}
             </div>
