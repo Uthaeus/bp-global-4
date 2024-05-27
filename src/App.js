@@ -19,6 +19,7 @@ import AdminNewOrder from "./components/admin/admin-orders/admin-new-order";
 import AdminEditOrder from "./components/admin/admin-orders/admin-edit-order";
 import Account from "./account/account";
 import AccountOrderDetail from "./account/account-order-detail";
+import AccountEdit from "./account/account-edit";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/account/orders/:id",
         element: <AccountOrderDetail />,
+      },
+      {
+        path: "/account/edit",
+        element: <AccountEdit />,
       }
     ],
   },

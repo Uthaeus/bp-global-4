@@ -1,0 +1,30 @@
+
+.account-edit {
+    padding: 3rem 8%;
+    position: relative;
+
+    .account-edit-title {
+        width: max-content;
+        font-size: 2.5em;
+        font-weight: 600;
+        color: $blue500;
+        padding-right: 2rem;
+        margin-bottom: 4rem;
+        border-bottom: 2px solid $blue500;
+    }
+
+    .account-edit-form {
+        width: 70%;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: $lightGray;
+        border-radius: 10px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .account-edit-actions {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
