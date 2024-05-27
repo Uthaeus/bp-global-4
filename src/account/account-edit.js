@@ -25,19 +25,19 @@ export default function AccountEdit() {
             <form className="account-edit-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group mb-3">
                     <label htmlFor="name">Name</label>
-                    <input type="text" id="name" {...register("name", { required: true })} />
+                    <input type="text" id="name" className="form-control" {...register("name", { required: true })} />
                     {errors.name && <p className="text-danger">Name is required</p>}
                 </div>
 
                 <div className="form-group mb-3">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" {...register("email", { required: true })} />
+                    <input type="email" id="email" className="form-control" {...register("email", { required: true })} />
                     {errors.email && <p className="text-danger">Email is required</p>}
                 </div>
 
-                <div className="form-group mb-3">
+                <div className="form-group mb-5">
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" placeholder="Leave blank to keep the same" {...register("password")} />
+                    <input type="password" id="password" className="form-control" placeholder="Leave blank to keep the same" {...register("password")} />
                 </div>
 
                 <button type="submit" className="btn btn-primary">Update</button>
