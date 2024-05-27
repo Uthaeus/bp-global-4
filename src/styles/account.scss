@@ -65,14 +65,15 @@
         margin: 0 auto;
         background-color: $grey;
         border-radius: 5px;
-        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 4px 8px 4px rgba(0, 0, 0, 0.25);
         overflow: hidden;
 
         .account-orders-header {
             display: grid;
             grid-template-columns: 1fr 1fr;
             padding-top: 0.5rem;
-            font-size: 1.2em;
+            font-size: 1.3em;
+            font-weight: 700;
             color: white;
             background-color: $blue400;
             border-bottom: 1px solid $black;
@@ -110,7 +111,8 @@
     .account-order-item-item {
         padding-top: 0.5rem;
         margin-left: 2rem;
-        font-size: 1.2em;
+        font-size: 1.4em;
+        font-weight: 500;
         color: $black;
     }
 }

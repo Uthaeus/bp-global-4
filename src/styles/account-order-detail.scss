@@ -1,0 +1,88 @@
+
+.account-order-detail {
+    padding: 3rem 8%;
+    min-height: calc(100vh - 90px);
+    position: relative;
+
+    .account-order-detail-header {
+        width: 65%;
+        padding: 2rem 0;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid $black;
+
+        .account-order-detail-title {
+            font-size: 2em;
+            font-weight: 600;
+            color: $blue500;
+            margin-left: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .account-order-detail-date {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: $blue400;
+            margin-left: 2rem;
+        }
+    }
+
+    .account-order-detail-empty {
+        font-size: 1.5em;
+        color: $black;
+        text-align: center;
+    }
+
+    .account-order-detail-body {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+
+        .account-order-detail-image-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 4px 6px 4px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.02);
+                box-shadow: 5px 7px 4px rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+
+    .account-order-detail-actions {
+        position: absolute;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
+
+// account order modal
+
+.account-order-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .account-order-modal-image-wrapper {
+        width: 80%;
+        height: 80vh;
+        position: relative;
+
+        button {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}
