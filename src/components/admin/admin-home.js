@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+
+import Button from "../ui/button";
 
 export default function AdminHome() {
+
+    const navigate = useNavigate();
+
     return (
         <div className="admin-container">
             <h1 className="admin-title">Admin Home</h1>
             <p className="w-75 d-flex justify-content-end">
-                <Link to='/admin/user/new' className="btn btn-primary">Create New User</Link>
+                <Button text="Create New User" onClick={() => navigate('/admin/user/new')} />
             </p>
         </div>
     )

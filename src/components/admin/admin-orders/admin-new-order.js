@@ -1,7 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 
 import { UsersContext } from "../../../store/users-context";
+import Button from "../../ui/button";
 
 import AdminOrderForm from "./admin-order-form";
 
@@ -10,6 +11,8 @@ export default function AdminNewOrder() {
     const { users } = useContext(UsersContext);
     const [user, setUser] = useState({});
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const u = users.find((user) => user.id === id);
@@ -23,8 +26,8 @@ export default function AdminNewOrder() {
             <AdminOrderForm user={user} />
 
             <div className="admin-container-actions">
-                <Link to='/admin' className="btn btn-primary mx-2">Back to Dashboard</Link>
-                <Link to="/admin/orders" className="btn btn-secondary mx-2">Back to Orders</Link>
+                <Button text="Back to Orders" className='secondary-button mx-2' onClick={() => navigate('/admin/orders')} />
+                <Button text="Back to Dashboard" className='mx-2' onClick={() => navigate('/admin')} />
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 
 import { UsersContext } from "../../../store/users-context";
+import Button from "../../ui/button";
 
 export default function AdminUserForm({ user }) {
 
@@ -57,7 +58,8 @@ export default function AdminUserForm({ user }) {
                 {errors.email && <span className="text-danger">Email is required</span>}
             </div>
 
-            <button type="submit" className="admin-user-form-btn mb-4">{ user ? "Update User" : "Create User"}</button>
+            {/* <button type="submit" className="admin-user-form-btn mb-4">{ user ? "Update User" : "Create User"}</button> */}
+            <Button text={ user ? "Update User" : "Create User" } />
         </form>
     )
 }

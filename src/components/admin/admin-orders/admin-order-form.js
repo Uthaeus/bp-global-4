@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react"
 import { useNavigate } from "react-router";
 
 import { OrdersContext } from "../../../store/orders-context";
+import Button from "../../ui/button";
 
 export default function AdminOrderForm({ order, user }) {
 
@@ -99,7 +100,7 @@ export default function AdminOrderForm({ order, user }) {
                 ))}
             </div>
 
-            <button type="submit" className="btn btn-primary">{ order ? "Update Order" : "Create Order"}</button>
+            <Button text={ order ? "Update Order" : "Create Order"} />
         </form>
     )
 }

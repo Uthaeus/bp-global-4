@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { OrdersContext } from "../../../store/orders-context";
 import image from '../../../assets/images/overtime_image2_tn.jpg';
 
 import AdminOrderModal from "./admin-order-modal";
+import Button from "../../ui/button";
 
 export default function AdminOrderDetail() {
     const { id } = useParams();
@@ -14,6 +15,8 @@ export default function AdminOrderDetail() {
     const [orderImages, setOrderImages] = useState([image, image, image]);
     const [modalImage, setModalImage] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const order = orders.find((order) => order.id.toString() === id.toString());
@@ -55,12 +58,9 @@ export default function AdminOrderDetail() {
             </div>
 
             <div className="admin-order-detail-actions">
-                <button className="btn btn-danger mx-3">Delete Order</button>
-
-                <Link to={`/admin/orders/${id}/edit`} className="btn btn-info mx-3">Edit Order</Link>
-
-                <Link to="/admin/orders" className="btn btn-primary mx-3">Back</Link>
-
+                <Button text="Delete Order" className="delete-button mx-2" />
+                <Button text="Edit Order" className="edit-button mx-2" onClick={() => navigate(`/admin/orders/${id}/edit`)} />
+                <Button text="Back to Orders" className="mx-2" onClick={() => navigate('/admin/orders')} />
             </div>
             
         </div>
