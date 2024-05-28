@@ -6,7 +6,7 @@ export default function AdminOrdersChartItem({ order }) {
         <Link to={`/admin/orders/${order.id}`} className="admin-orders-chart-item">
             <p className="admin-orders-chart-item-title">{order.customer_name}</p>
             <p className="admin-orders-chart-item-title">{order.order_number}</p>
-            <p className="admin-orders-chart-item-title">{order.created_at}</p>
+            <p className="admin-orders-chart-item-title">{order.order_date}</p>
         </Link>
     )
 }

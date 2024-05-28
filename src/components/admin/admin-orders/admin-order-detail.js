@@ -41,7 +41,7 @@ export default function AdminOrderDetail() {
                 <div className="admin-order-detail-header-left">
                     <p className="admin-order-detail-header-item">Customer: <Link to={`/admin/user/${order.uid}`} className="admin-order-detail-header-item-name mx-2">{order.customer_name}</Link></p>
 
-                    <p className="admin-order-detail-header-order-date">Order Date: <span className="mx-2">{order.created_at}</span></p>
+                    <p className="admin-order-detail-header-order-date">Order Date: <span className="mx-2">{order.order_date}</span></p>
                 </div>
                 <div className="admin-order-detail-header-right">
                     <p className="admin-order-detail-header-item">Order Number: <span className="mx-2">{order.order_number}</span></p>

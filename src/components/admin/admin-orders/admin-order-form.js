@@ -37,40 +37,52 @@ export default function AdminOrderForm({ order, user }) {
     }
 
     const onSubmit = async (data) => {
-        const date = new Date();
-        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-        const formattedDate = date.toLocaleDateString('en-US', options);
+        // const date = new Date();
+        // const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        // const formattedDate = date.toLocaleDateString('en-US', options);
 
-        try {
+        // try {
 
-            const orderObj = {
-                ...data,
-                images: orderImages
-            }
+        //     const orderObj = {
+        //         ...data,
+        //         images: orderImages
+        //     }
 
-            if (order) {
-                orderObj.updated_at = formattedDate;
-                updateOrder(orderObj);
-                console.log('edited order submitted', orderObj);
-            } else {
-                orderObj.id = new Date().getTime();
-                orderObj.created_at = formattedDate;
-                addOrder(orderObj);
-                console.log('order submitted', orderObj);
-            }
-        } catch (error) {
-            console.log('order submit error',error);
-        } finally {
-            navigate(`/admin/user/${data.uid}`);
-        }
+        //     if (order) {
+        //         orderObj.updated_at = formattedDate;
+        //         updateOrder(orderObj);
+        //         console.log('edited order submitted', orderObj);
+        //     } else {
+        //         orderObj.id = new Date().getTime();
+        //         orderObj.created_at = formattedDate;
+        //         addOrder(orderObj);
+        //         console.log('order submitted', orderObj);
+        //     }
+        // } catch (error) {
+        //     console.log('order submit error',error);
+        // } finally {
+        //     navigate(`/admin/user/${data.uid}`);
+        // }
+
+        console.log('order form submit', data);
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="admin-order-form">
+            <div className="row mb-3">
+                <div className="col-md-8">
+                    <div className="form-group">
+                        <label htmlFor="customer_name">Customer Name</label>
+                        <input type="text" id="customer_name" className="form-control" {...register("customer_name")} disabled={true} />
+                    </div>
+                </div>
 
-            <div className="form-group mb-3">
-                <label htmlFor="customer_name">Customer Name</label>
-                <input type="text" id="customer_name" className="form-control" {...register("customer_name")} disabled={true} />
+                <div className="col-md-4">
+                    <div className="form-group">
+                        <label htmlFor="order_date">Order Date</label>
+                        <input type="date" id="order_date" className="form-control" {...register("order_date")} />
+                    </div>
+                </div>
             </div>
 
             <div className="d-none">

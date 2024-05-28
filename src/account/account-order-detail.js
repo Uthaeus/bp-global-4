@@ -46,7 +46,7 @@ export default function AccountOrderDetail() {
 
             <div className="account-order-detail-header">
                 <h1 className="account-order-detail-title">Order Number: <span className="mx-4">{order?.order_number}</span></h1>
-                <p className="account-order-detail-date">Order Date: <span className="mx-4">{order?.created_at}</span></p>
+                <p className="account-order-detail-date">Order Date: <span className="mx-4">{order?.order_date}</span></p>
 
                 <Button text="Report Problem" className="delete-button mx-2" onClick={reportProblemHandler} />
             </div>

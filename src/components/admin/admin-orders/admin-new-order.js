@@ -15,7 +15,7 @@ export default function AdminNewOrder() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const u = users.find((user) => user.id === id);
+        const u = users.find((user) => user.id.toString() === id.toString());
         setUser(u);
     }, [users, id]);
 
