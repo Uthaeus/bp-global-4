@@ -1,11 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { UsersContext } from "../../../store/users-context";
 import { OrdersContext } from "../../../store/orders-context";
 
 import AdminUserDetailChartItem from "./admin-user-detail-chart-item";
+import Button from "../../ui/button";
 
 export default function AdminUserDetail() {
 
@@ -14,6 +15,8 @@ export default function AdminUserDetail() {
     const { orders } = useContext(OrdersContext);
     const [user, setUser] = useState(null);
     const [userOrders, setUserOrders] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const user = users.find((user) => user.id.toString() === id.toString());
@@ -31,7 +34,9 @@ export default function AdminUserDetail() {
             <div className="admin-user-detail-header">
                 <h1 className="admin-user-detail-title">{user?.name}</h1>
                 <p className="admin-user-detail-email">{user?.email}</p>
-                <p className="admin-user-detail-new-order"><Link to={`/admin/user/${id}/order/new`} className="btn btn-primary">Create New Order</Link></p>
+                <p className="admin-user-detail-new-order">
+                    <Button text="Create New Order" onClick={() => navigate(`/admin/user/${id}/order/new`)} />
+                </p>
                 <Link to={`/admin/user/${id}/edit`} className="admin-user-detail-edit">Edit User</Link>
             </div>
 
@@ -51,9 +56,9 @@ export default function AdminUserDetail() {
             </div>}
 
             <div className="admin-user-detail-actions">
-                <button className="btn btn-danger mx-2">Delete User</button>
-                <Link to={`/admin/user/${id}/edit`} className="btn btn-info mx-2">Edit User</Link>
-                <Link to='/admin/users' className="btn btn-primary mx-2">Back</Link>
+                <Button text="Delete User" className="delete-button mx-2" onClick={() => navigate(`/admin/user/${id}/delete`)} />
+                <Button text="Edit User" className="edit-button mx-2" onClick={() => navigate(`/admin/user/${id}/edit`)} />
+                <Button text="Back to Users" className="mx-2" onClick={() => navigate('/admin/users')} />
             </div>
         </div>
     );

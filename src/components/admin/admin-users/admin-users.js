@@ -1,12 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import AdminChart from "../admin-chart/admin-chart";
+import Button from "../../ui/button";
 
 import { UsersContext } from "../../../store/users-context";
 
 export default function AdminUsers() {
     const { users } = useContext(UsersContext);
+
+    const navigate = useNavigate();
 
     return (
         <div className="admin-container">
@@ -15,7 +18,7 @@ export default function AdminUsers() {
             <AdminChart type="users" data={users} />
 
             <div className="admin-container-actions">
-                <Link to='/admin' className="btn btn-primary">Back to Dashboard</Link>
+                <Button text="Back to Dashboard" onClick={() => navigate('/admin')} />
             </div>
         </div>
     );
