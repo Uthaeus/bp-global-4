@@ -1,3 +1,4 @@
+import Button from "../components/ui/button";
 
 export default function AccountOrderModal({ image, onClose }) {
 
@@ -11,7 +12,7 @@ export default function AccountOrderModal({ image, onClose }) {
         <div className="account-order-modal" onClick={closeModalHandler}>
             <div className="account-order-modal-image-wrapper">
                 <img src={image} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
-                <button className="btn btn-danger" onClick={onClose}>X</button>
+                <Button text="X" className="delete-button" onClick={onClose} />
             </div>
         </div>
     );

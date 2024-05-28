@@ -1,3 +1,4 @@
+import Button from "../../ui/button";
 
 export default function AdminOrderModal({ image, onClose }) {
 
@@ -11,7 +12,7 @@ export default function AdminOrderModal({ image, onClose }) {
         <div className="admin-order-modal" onClick={closeModalHandler}>
             <div className="admin-order-modal-image-container">
                 <img src={image} alt="order-image" />
-                <button onClick={onClose} className="btn btn-danger">X</button>
+                <Button text="X" className="delete-button" onClick={onClose} />
             </div>
         </div>
     );

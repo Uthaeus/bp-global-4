@@ -1,10 +1,11 @@
 import { useParams } from "react-router";
 import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { OrdersContext } from "../store/orders-context";
 
 import AccountOrderModal from "./account-order-modal";
+import Button from "../components/ui/button";
 
 import image from '../assets/images/overtime_image2_tn.jpg';
 
@@ -15,6 +16,8 @@ export default function AccountOrderDetail() {
     const [order, setOrder] = useState(null);
     const [modalImage, setModalImage] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     const orderImages = [image, image, image];
 
@@ -56,8 +59,8 @@ export default function AccountOrderDetail() {
             )}
 
             <div className="account-order-detail-actions">
-                <Link to='/account' className="btn btn-secondary mx-2">Back to Account</Link>
-                <Link to='/' className="btn btn-primary mx-2">Back to Home</Link>
+                <Button text="Back to Account" className="secondary-button mx-2" onClick={() => navigate('/account')} />
+                <Button text="Back to Home" className="mx-2" onClick={() => navigate('/')} />
             </div>
         </div>
     );

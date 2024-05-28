@@ -1,14 +1,17 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { UserContext } from "../store/user-context";
 import { OrdersContext } from "../store/orders-context";
 
 import AccountOrderItem from "./account-order-item";
+import Button from "../components/ui/button";
 
 export default function Account() {
     const { user } = useContext(UserContext);
     const { orders } = useContext(OrdersContext);
+
+    const navigate = useNavigate();
 
     return (
         <div className="account">
@@ -36,7 +39,7 @@ export default function Account() {
             )}
 
             <div className="account-actions">
-                <Link to='/' className="btn btn-primary">Back to Home</Link>
+                <Button text="Back to Home" onClick={() => navigate('/')} />
             </div>
         </div>
     )

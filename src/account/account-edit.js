@@ -1,14 +1,14 @@
 import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import { UserContext } from "../store/user-context";
+import Button from "../components/ui/button";
 
 export default function AccountEdit() {
     const { user } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         reset(user);
@@ -40,12 +40,13 @@ export default function AccountEdit() {
                     <input type="password" id="password" className="form-control" placeholder="Leave blank to keep the same" {...register("password")} />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Update</button>
+                <Button text="Update Account" />
             </form>
 
             <div className="account-edit-actions">
-                <Link to="/account" className="btn btn-success mx-2">Back to Account</Link>
-                <Link to='/' className="btn btn-primary mx-2">Back to Home</Link>
+                <Button text="Delete Account" className="delete-button mx-2" />
+                <Button text="Back to Account" className="secondary-button mx-2" onClick={() => navigate('/account')} />
+                <Button text="Back to Home" className="mx-2" onClick={() => navigate('/')} />
             </div>
         </div>
     )
