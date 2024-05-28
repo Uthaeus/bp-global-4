@@ -1,7 +1,7 @@
 
 .button {
     padding: 0.25rem 1rem;
-    background-color: $blue300;
+    background-color: $blue400;
     color: $white;
     text-decoration: none;
     border: none;
@@ -27,5 +27,5 @@
 }
 
 .delete-button {
-    background-color: rgb(145, 32, 32);
+    background-color: $red;
 }

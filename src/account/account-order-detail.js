@@ -36,6 +36,10 @@ export default function AccountOrderDetail() {
         setModalOpen(false);
     }
 
+    const reportProblemHandler = () => {
+        alert(`Notice has been reported for order ${order?.order_number}`);
+    }
+
     return (
         <div className="account-order-detail">
             {modalOpen && <AccountOrderModal image={modalImage} onClose={closeModalHandler} />}
@@ -43,6 +47,8 @@ export default function AccountOrderDetail() {
             <div className="account-order-detail-header">
                 <h1 className="account-order-detail-title">Order Number: <span className="mx-4">{order?.order_number}</span></h1>
                 <p className="account-order-detail-date">Order Date: <span className="mx-4">{order?.created_at}</span></p>
+
+                <Button text="Report Problem" className="delete-button mx-2" onClick={reportProblemHandler} />
             </div>
 
             {orderImages.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
