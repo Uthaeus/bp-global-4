@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+import Button from "../ui/button";
+
 export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -25,7 +27,7 @@ export default function Login() {
                     {errors.password && <span className="text-danger">Password is required</span>}
                 </div>
 
-                <button type="submit" className="auth-btn mb-4">Login</button>
+                <Button text="Log In" className="mb-4" />
 
                 <p className="auth-form-text">Don't have an account? <Link to="/register" className="auth-link">Register</Link></p>
             </form>
