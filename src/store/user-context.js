@@ -24,7 +24,8 @@ const UserContextProvider = ({ children }) => {
     }, []);
 
     const updateUser = (data) => {
-        setUser(data);
+        console.log('update user method - user-context', data);
+        setUser({...user, ...data});
     }
 
     const logOutUser = () => {

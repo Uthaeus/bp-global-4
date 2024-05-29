@@ -6,7 +6,7 @@ import { UserContext } from "../store/user-context";
 import Button from "../components/ui/button";
 
 export default function AccountEdit() {
-    const { user } = useContext(UserContext);
+    const { user, updateUser } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const navigate = useNavigate();
 
@@ -14,8 +14,15 @@ export default function AccountEdit() {
         reset(user);
     }, [user, reset]);
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+
+        try {
+            updateUser(data);
+        } catch (error) {
+            console.log('update user error: ', error);
+        } finally {
+            navigate('/account');
+        }
     }
 
     return (
