@@ -3,111 +3,79 @@
     width: 75%;
     margin: 0 auto;
     background-color: $lightGray;
-    border-radius: 10px;
+    border: 1px solid $black;
+    border-radius: 6px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
 
 .admin-chart-header {
-    background-color: $black;
-    padding: 0;
+    background-color: $silver;
     display: grid;
-    font-size: 1.4em;
-    color: white;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: $black2;
+    border-bottom: 1px solid $black2;
+
+    .admin-chart-header-item {
+        margin-left: 1rem;
+        padding: 0.5rem 0;
+        border-right: 1px solid $black2;
+
+        &:last-child {
+            border-right: none;
+        }
+
+        .admin-chart-header-item-title {
+            margin-bottom: -0.01rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.admin-chart-item {
+    display: grid;
+    text-decoration: none;
+    border-bottom: 1px solid $black;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $blue300;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .admin-chart-item-item {
+        margin-left: 2rem;
+        margin-bottom: -0.01rem;
+        padding: 0.25rem 0;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: $black;
+        border-right: 1px solid $black;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
 }
 
 .admin-orders-chart-header {
     grid-template-columns: 1fr 1fr 1fr;
-
-    .admin-orders-chart-header-item {
-        margin-left: 1rem;
-        border-right: 1px solid white;
-
-        &:last-child {
-            border-right: none;
-        }
-
-        .admin-orders-chart-header-item-title {
-            margin-bottom: -0.01rem;
-        }
-    }
 }
 
 .admin-orders-chart-item {
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    text-decoration: none;
-    border-bottom: 1px solid $black;
-    padding: 0;
-    margin: 0;
-    transition: background-color 0.3s ease-in-out;
-
-    &:hover {
-        background-color: $blue100;
-    }
-
-    &:last-child {
-        border-bottom: none;
-    }
-
-    .admin-orders-chart-item-title {
-        margin-left: 2rem;
-        margin-bottom: -0.01rem;
-        font-size: 1.5em;
-        font-weight: 600;
-        color: $black;
-        border-right: 1px solid $black;
-
-        &:last-child {
-            border-right: none;
-        }
-    }
 }
 
 .admin-users-chart-header {
     grid-template-columns: 1fr 1fr;
-
-    .admin-users-chart-header-item {
-        margin-left: 1rem;
-        border-right: 1px solid white;
-
-        &:last-child {
-            border-right: none;
-        }
-
-        .admin-users-chart-header-item-title {
-            margin-bottom: -0.01rem;
-        }
-    }
 }
 
 .admin-users-chart-item {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    text-decoration: none;
-    border-bottom: 1px solid $black;
-    padding: 0;
-    margin: 0;
-    transition: background-color 0.3s ease-in-out;
-
-    &:hover {
-        background-color: $blue100;
-    }
-
-    &:last-child {
-        border-bottom: none;
-    }
-
-    .admin-users-chart-item-title {
-        margin-left: 2rem;
-        margin-bottom: -0.01rem;
-        font-size: 1.5em;
-        font-weight: 600;
-        color: $black;
-        border-right: 1px solid $black;
-
-        &:last-child {
-            border-right: none;
-        }
-    }
 }
