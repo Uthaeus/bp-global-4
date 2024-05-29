@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
-import { dummyAdmin } from "./dummy/dummy-users";
-// import { dummyUser } from "./dummy/dummy-users";
+//import { dummyAdmin } from "./dummy/dummy-users";
+import { dummyUser } from "./dummy/dummy-users";
 
 export const UserContext = createContext({
     user: null,
@@ -18,8 +18,8 @@ const UserContextProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setUser(dummyAdmin);
-        setIsAdmin(true);
+        setUser(dummyUser);
+        //setIsAdmin(true);
         setIsLoading(false);
     }, []);
 

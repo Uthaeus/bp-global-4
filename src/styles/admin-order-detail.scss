@@ -6,16 +6,14 @@
     .admin-order-detail-header {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin: 3rem 0;
+        margin: 3rem 0 1rem 0;
 
         .admin-order-detail-header-left {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
             padding-left: 2rem;
 
             .admin-order-detail-header-item-name {
                 text-decoration: none;
+                font-size: 1.2em;
                 color: $blue200;
                 border-bottom: 2px solid transparent;
                 transition: color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
@@ -30,19 +28,27 @@
 
         .admin-order-detail-header-right {
             display: flex;
+            flex-direction: column;
         }
 
         .admin-order-detail-header-item {
             font-size: 2em;
             font-weight: 600;
-            color: $black;
+            color: $blue500;
         }
 
         .admin-order-detail-header-order-date {
             font-size: 1.2em;
             font-weight: 600;
-            color: $black;
+            color: $blue400;
         }
+    }
+
+    .admin-order-detail-divider {
+        width: 75%;
+        height: 1px;
+        background-color: $blue500;
+        margin: 0 auto 1rem auto;
     }
 
     .admin-order-detail-body {

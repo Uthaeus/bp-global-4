@@ -47,8 +47,6 @@ export default function AccountOrderDetail() {
             <div className="account-order-detail-header">
                 <h1 className="account-order-detail-title">Order Number: <span className="mx-4">{order?.order_number}</span></h1>
                 <p className="account-order-detail-date">Order Date: <span className="mx-4">{order?.order_date}</span></p>
-
-                <Button text="Report Problem" className="delete-button mx-2" onClick={reportProblemHandler} />
             </div>
 
             {orderImages.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
@@ -68,6 +66,8 @@ export default function AccountOrderDetail() {
                 <Button text="Back to Account" className="secondary-button mx-2" onClick={() => navigate('/account')} />
                 <Button text="Back to Home" className="mx-2" onClick={() => navigate('/')} />
             </div>
+
+            <Button text="Report Problem With This Order" className="delete-button account-order-detail-report-button" onClick={reportProblemHandler} />
         </div>
     );
 }

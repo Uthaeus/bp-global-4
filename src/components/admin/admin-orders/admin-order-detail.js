@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
+import { UsersContext } from "../../../store/users-context";
 import { OrdersContext } from "../../../store/orders-context";
 import image from '../../../assets/images/overtime_image2_tn.jpg';
 
@@ -11,7 +12,9 @@ import Button from "../../ui/button";
 export default function AdminOrderDetail() {
     const { id } = useParams();
     const { orders } = useContext(OrdersContext);
+    const { users } = useContext(UsersContext);
     const [order, setOrder] = useState({});
+    const [orderUser, setOrderUser] = useState({});
     const [orderImages, setOrderImages] = useState([image, image, image]);
     const [modalImage, setModalImage] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
@@ -20,7 +23,9 @@ export default function AdminOrderDetail() {
 
     useEffect(() => {
         const order = orders.find((order) => order.id.toString() === id.toString());
+        const user = users.find((user) => user.id === order.uid);
         setOrder(order);
+        setOrderUser(user);
     }, [orders, id]);
 
     const openModalHandler = (img) => {
@@ -39,14 +44,18 @@ export default function AdminOrderDetail() {
 
             <div className="admin-order-detail-header">
                 <div className="admin-order-detail-header-left">
-                    <p className="admin-order-detail-header-item">Customer: <Link to={`/admin/user/${order.uid}`} className="admin-order-detail-header-item-name mx-2">{order.customer_name}</Link></p>
+                    <p className="admin-order-detail-header-item">Customer: <Link to={`/admin/user/${orderUser.id}`} className="admin-order-detail-header-item-name mx-2">{orderUser.name}</Link></p>
 
-                    <p className="admin-order-detail-header-order-date">Order Date: <span className="mx-2">{order.order_date}</span></p>
+                    
                 </div>
                 <div className="admin-order-detail-header-right">
                     <p className="admin-order-detail-header-item">Order Number: <span className="mx-2">{order.order_number}</span></p>
+
+                    <p className="admin-order-detail-header-order-date">Order Date: <span className="mx-2">{order.order_date}</span></p>
                 </div>
             </div>
+
+            <div className="admin-order-detail-divider" />
 
             <div className="admin-order-detail-body">
 

@@ -5,10 +5,11 @@
     position: relative;
 
     .account-order-detail-header {
-        width: 65%;
-        padding: 2rem 0;
+        width: 75%;
+        padding-left: 5%;
+        margin-left: 5%;
         margin-bottom: 3rem;
-        border-bottom: 1px solid $black;
+        border-bottom: 1px solid $blue500;
 
         .account-order-detail-title {
             font-size: 2em;
@@ -57,6 +58,12 @@
         position: absolute;
         bottom: 3rem;
         right: 3rem;
+    }
+
+    .account-order-detail-report-button {
+        position: absolute;
+        bottom: 3rem;
+        left: 3rem;
     }
 }
 
