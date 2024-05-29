@@ -52,71 +52,14 @@
         padding-bottom: 0.5rem;
         padding-right: 2rem;
         border-bottom: 2px solid $blue400;
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
     }
 
     .admin-user-detail-no-orders {
         font-size: 1.3em;
         font-weight: 500;
         color: $black;
-        margin-left: 2rem;
-    }
-
-    .admin-user-detail-orders-container {
-        width: 90%;
-        margin: 3rem auto;
-        background-color: $lightGray;
-        border-radius: 10px;
-        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-        overflow: hidden;
-
-        .admin-user-detail-orders-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            font-size: 1.5em;
-            font-weight: 600;
-            color: white;
-            background-color: $black;
-
-            .admin-user-detail-orders-header-item {
-                margin-left: 1rem;
-                margin-bottom: -0.01rem;
-                border-right: 1px solid white;
-
-                &:last-child {
-                    border-right: none;
-                }
-            }
-        }
-
-        .admin-user-detail-order-chart-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            font-size: 1.5em;
-            font-weight: 600;
-            color: $black;
-            border-bottom: 1px solid $black;
-            text-decoration: none;
-            transition: background-color 0.3s ease-in-out;
-
-            &:hover {
-                background-color: $blue100;
-            }
-
-            &:last-child {
-                border-bottom: none;
-            }
-
-            .admin-user-detail-chart-item-title {
-                margin-left: 2rem;
-                margin-bottom: -0.01rem;
-                border-right: 1px solid $black;
-
-                &:last-child {
-                    border-right: none;
-                }
-            }
-        }
+        margin-left: 4rem;
     }
 
     .admin-user-detail-actions {

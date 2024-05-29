@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UsersContext } from "../../../store/users-context";
 import { OrdersContext } from "../../../store/orders-context";
 
-import AdminUserDetailChartItem from "./admin-user-detail-chart-item";
+import AdminChart from "../admin-chart/admin-chart";
 import Button from "../../ui/button";
 
 export default function AdminUserDetail() {
@@ -44,16 +44,7 @@ export default function AdminUserDetail() {
 
             {userOrders.length === 0 && <p className="admin-user-detail-no-orders">No Orders To Display</p>}
 
-            {userOrders.length > 0 && <div className="admin-user-detail-orders-container">
-                <div className="admin-user-detail-orders-header">
-                    <p className="admin-user-detail-orders-header-item">Order Number</p>
-                    <p className="admin-user-detail-orders-header-item">Order Date</p>
-                </div>
-
-                {userOrders.map((order) => (
-                    <AdminUserDetailChartItem key={order.id} order={order} />
-                ))}
-            </div>}
+            {userOrders.length > 0 && <AdminChart type='user-detail' data={userOrders} /> }
 
             <div className="admin-user-detail-actions">
                 <Button text="Delete User" className="delete-button mx-2" onClick={() => navigate(`/admin/user/${id}/delete`)} />
