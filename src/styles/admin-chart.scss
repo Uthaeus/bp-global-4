@@ -8,10 +8,15 @@
     overflow: hidden;
 }
 
-.admin-orders-chart-header {
+.admin-chart-header {
     background-color: $black;
     padding: 0;
     display: grid;
+    font-size: 1.4em;
+    color: white;
+}
+
+.admin-orders-chart-header {
     grid-template-columns: 1fr 1fr 1fr;
 
     .admin-orders-chart-header-item {
@@ -24,8 +29,6 @@
 
         .admin-orders-chart-header-item-title {
             margin-bottom: -0.01rem;
-            font-size: 1.4em;
-            color: white;
         }
     }
 }
@@ -62,9 +65,6 @@
 }
 
 .admin-users-chart-header {
-    background-color: $black;
-    padding: 0;
-    display: grid;
     grid-template-columns: 1fr 1fr;
 
     .admin-users-chart-header-item {
@@ -77,8 +77,6 @@
 
         .admin-users-chart-header-item-title {
             margin-bottom: -0.01rem;
-            font-size: 1.4em;
-            color: white;
         }
     }
 }
