@@ -32,7 +32,7 @@ export default function AccountEdit() {
             <form className="account-edit-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group mb-3">
                     <label htmlFor="name">Name</label>
-                    <input type="text" id="name" className="form-control" {...register("name", { required: true })} />
+                    <input type="text" id="name" className="form-control" autoFocus={true} {...register("name", { required: true })} />
                     {errors.name && <p className="text-danger">Name is required</p>}
                 </div>
 

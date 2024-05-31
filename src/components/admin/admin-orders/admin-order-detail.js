@@ -26,7 +26,7 @@ export default function AdminOrderDetail() {
         const user = users.find((user) => user.id === order.uid);
         setOrder(order);
         setOrderUser(user);
-    }, [orders, id]);
+    }, [orders, id , users]);
 
     const openModalHandler = (img) => {
         setModalImage(img);
