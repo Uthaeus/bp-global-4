@@ -2,7 +2,8 @@ import { useContext, useEffect, useState, createContext } from "react";
 
 import { UserContext } from "./user-context";
 
-import { dummyOrders } from "./dummy/dummy-orders";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../firebase";
 
 export const OrdersContext = createContext({
     orders: [],
@@ -18,14 +19,28 @@ const OrdersContextProvider = ({ children }) => {
     const { user, isAdmin } = useContext(UserContext);
 
     useEffect(() => {
-        if (user) {
-            if (isAdmin) {
-                setOrders(dummyOrders);
-            } else {
-                setOrders(dummyOrders.filter(order => order.uid === user.id));
-            }
+        const getOrders = async () => {
+            const querySnapshot = await getDocs(collection(db, "orders"));
+            const orders = [];
+            querySnapshot.forEach((doc) => {
+                if (isAdmin) {
+                    orders.push({ ...doc.data(), id: doc.id });
+                } else {
+                    if (doc.data().uid === user.id) {
+                        orders.push({ ...doc.data(), id: doc.id });
+                    }
+                }
+            });
+            setOrders(orders);
         }
-        setIsLoading(false);
+        if (user) {
+            getOrders();
+            setIsLoading(false);    
+        } else {
+            setOrders([]);
+            setIsLoading(false);
+        }
+        
     }, [ user, isAdmin ]);
 
     const addOrder = (order) => {

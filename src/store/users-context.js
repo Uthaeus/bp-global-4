@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { UserContext } from "./user-context";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../firebase";
 
-import { dummyUsers } from "./dummy/dummy-users";
+import { UserContext } from "./user-context";
 
 export const UsersContext = createContext({
     users: [],
@@ -18,10 +19,22 @@ const UsersContextProvider = ({ children }) => {
     const { isAdmin } = useContext(UserContext);
 
     useEffect(() => {
-        if (isAdmin) {
-            setUsers(dummyUsers);
+        const getUsers = async () => {
+            const querySnapshot = await getDocs(collection(db, "users"));
+            const users = [];
+            querySnapshot.forEach((doc) => {
+                users.push({ ...doc.data(), id: doc.id });
+            });
+            setUsers(users);
         }
-        setIsLoading(false);
+        if (isAdmin) {
+            getUsers();
+            setIsLoading(false);
+        } else {
+            setUsers([]);
+            setIsLoading(false);
+        }
+        
     }, [ isAdmin ]);
 
     const addUser = (user) => {
