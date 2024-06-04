@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, deleteDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 import { UserContext } from "./user-context";
@@ -37,15 +37,18 @@ const UsersContextProvider = ({ children }) => {
         
     }, [ isAdmin ]);
 
-    const addUser = (user) => {
-        setUsers([...users, user]);
+    const addUser = async (user) => {
+        const docRef = await addDoc(collection(db, "users"), user);
+        setUsers([...users, { ...user, id: docRef.id }]);
     }
 
-    const updateUser = (user) => {
+    const updateUser = async (user) => {
+        await updateDoc(doc(db, "users", user.id), user);
         setUsers(users.map(u => u.id === user.id ? user : u));
     }
 
-    const deleteUser = (id) => {
+    const deleteUser = async (id) => {
+        await deleteDoc(doc(db, "users", id));
         setUsers(users.filter(user => user.id !== id));
     }
 

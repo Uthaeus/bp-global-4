@@ -28,20 +28,26 @@ export default function AdminUserForm({ user }) {
         try {
 
             if (user) {
-                data.updated_at = formattedDate;
-                updateUser(data);
+                const updatedUser = {
+                    ...user,
+                    ...data,
+                    updated_at: formattedDate
+                }
+                await updateUser(updatedUser);
                 console.log('updating user', data);
             } else {
-                data.id = Math.random().toString(36).substring(2, 9);
-                data.created_at = formattedDate;
-                addUser(data);
+                const newUser = {
+                    ...data,
+                    created_at: formattedDate
+                }
+                await addUser(data);
                 console.log('adding user', data);
             }
+
+            navigate('/admin/users');
         } catch (error) {
             console.log('user form submit error',error);
-        } finally {
-            navigate('/admin/users');
-        }
+        } 
     }
 
     return (
@@ -58,7 +64,6 @@ export default function AdminUserForm({ user }) {
                 {errors.email && <span className="text-danger">Email is required</span>}
             </div>
 
-            {/* <button type="submit" className="admin-user-form-btn mb-4">{ user ? "Update User" : "Create User"}</button> */}
             <Button text={ user ? "Update User" : "Create User" } />
         </form>
     )
