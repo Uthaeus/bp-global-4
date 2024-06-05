@@ -2,12 +2,15 @@ import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
+import { updatePassword, updateProfile } from "firebase/auth";
+import { auth } from "../firebase";
+
 import { UserContext } from "../store/user-context";
 import Button from "../components/ui/button";
 
 export default function AccountEdit() {
     const { user, updateUser } = useContext(UserContext);
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset, setError } = useForm();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,6 +18,10 @@ export default function AccountEdit() {
     }, [user, reset]);
 
     const onSubmit = async (data) => {
+        if (data.password !== '' && data.password.length < 6) {
+            setError('password', { message: 'Password must be at least 6 characters' });
+            return;
+        }
 
         try {
             const updatedUser = {
@@ -22,6 +29,17 @@ export default function AccountEdit() {
                 ...data
             }
             updateUser(updatedUser);
+
+            if (data.password !== '') {
+                await updatePassword(auth.currentUser, data.password);
+            }
+
+            if (data.name !== user.displayName || data.email !== user.email) {
+                await updateProfile(auth.currentUser, {
+                    displayName: data.name,
+                    email: data.email
+                });
+            }
 
             navigate('/account');
         } catch (error) {
@@ -49,6 +67,7 @@ export default function AccountEdit() {
                 <div className="form-group mb-5">
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" className="form-control" placeholder="Leave blank to keep the same" {...register("password")} />
+                    {errors.password && <p className="text-danger">{errors.password.message}</p>}
                 </div>
 
                 <Button text="Update Account" />
