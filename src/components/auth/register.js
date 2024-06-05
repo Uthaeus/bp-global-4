@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc, getDocs } from "firebase/firestore";
+import { doc, setDoc, getDocs, collection, updateDoc, deleteDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase";
 
 import Button from "../ui/button";
@@ -17,6 +17,15 @@ export default function Register() {
 
   const navigate = useNavigate();
 
+  const getUsers = async () => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    const users = [];
+    querySnapshot.forEach((doc) => {
+        users.push({ ...doc.data(), id: doc.id });
+    });
+    return users;
+}
+
   const onSubmit = async (data) => {
     if (data.password !== data.confirmPassword) {
       setError('confirmPassword', { type: 'validate', message: 'Passwords do not match' });
@@ -30,6 +39,34 @@ export default function Register() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       const user = userCredential.user;
+
+      const users = await getUsers();
+      const existingUser = users.find(u => u.email === data.email);
+      if (existingUser) {
+        const date = new Date();
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+
+        const newUser = {
+          ...existingUser,
+          instantiated_at: formattedDate
+        }
+
+        await setDoc(doc(db, "users", user.uid), newUser);
+
+        // delete existing user
+        await deleteDoc(doc(db, "users", existingUser.id));
+
+        // update orders associated with existing user
+        const orders = await getDocs(collection(db, "orders"));
+        orders.forEach(async (order) => {
+          if (order.data().uid === existingUser.id) {
+            await updateDoc(doc(db, "orders", order.id), {
+              uid: user.uid
+            });
+          }
+        });
+      }
 
       navigate('/');
     } catch (error) {
