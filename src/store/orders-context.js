@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, createContext } from "react";
 
 import { UserContext } from "./user-context";
 
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, deleteDoc, doc, updateDoc, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 export const OrdersContext = createContext({
@@ -43,18 +43,18 @@ const OrdersContextProvider = ({ children }) => {
         
     }, [ user, isAdmin ]);
 
-    const addOrder = (order) => {
-        // add firestore add
-        setOrders([...orders, order]);
+    const addOrder = async (order) => {
+        const docRef = await addDoc(collection(db, "orders"), order);
+        setOrders([...orders, { ...order, id: docRef.id }]);
     }
 
     const deleteOrder = (id) => {
-        // add firestore delete
+        deleteDoc(doc(db, "orders", id));
         setOrders(orders.filter(order => order.id.toString() !== id.toString()));
     }
 
     const updateOrder = (order) => {
-        // add firestore update
+        updateDoc(doc(db, "orders", order.id), order);
         setOrders(orders.map(o => o.id.toString() === order.id.toString() ? order : o));
     }
 
