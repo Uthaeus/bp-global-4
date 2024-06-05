@@ -45,7 +45,7 @@ export default function AccountOrderDetail() {
                 <p className="account-order-detail-date">Order Date: <span className="mx-4">{order?.order_date}</span></p>
             </div>
 
-            {orderImages.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
+            {order.images.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
 
             {order.images.length > 0 && (
                 <div className="account-order-detail-body">

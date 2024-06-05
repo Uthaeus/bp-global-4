@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom";
 
 import { UserContext } from "../store/user-context";
@@ -12,6 +12,12 @@ export default function Account() {
     const { orders } = useContext(OrdersContext);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/');
+        }
+    }, [user, navigate]);
 
     return (
         <div className="account">

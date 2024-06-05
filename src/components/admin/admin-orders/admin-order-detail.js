@@ -38,7 +38,7 @@ export default function AdminOrderDetail() {
 
     const deleteOrderHandler = async () => {
         await deleteOrder(id);
-        navigate(`/admin/users/${orderUser.id}`);
+        navigate(`/admin/user/${orderUser.id}`);
     }
 
     return (

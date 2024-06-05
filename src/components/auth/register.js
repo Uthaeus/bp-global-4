@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc, getDocs } from "firebase/firestore";
+import { auth, db } from "../../firebase";
 
 import Button from "../ui/button";
 
@@ -8,10 +12,29 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors },
+    setError
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
-    console.log(data);
+    if (data.password !== data.confirmPassword) {
+      setError('confirmPassword', { type: 'validate', message: 'Passwords do not match' });
+      return;
+    }
+    if (data.password.length < 6) {
+      setError('password', { type: 'validate', message: 'Password must be at least 6 characters' });
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+
+      navigate('/');
+    } catch (error) {
+      console.log('register error:', error);
+    }
   };
 
   return (
@@ -42,7 +65,7 @@ export default function Register() {
             {...register("password", { required: true })}
           />
           {errors.password && (
-            <span className="text-danger">Password is required</span>
+            <span className="text-danger">{ errors.password.message }</span>
           )}
         </div>
 
@@ -55,7 +78,7 @@ export default function Register() {
             {...register("confirmPassword", { required: true })}
           />
           {errors.confirmPassword && (
-            <span className="text-danger">Confirm Password is required</span>
+            <span className="text-danger">{ errors.confirmPassword.message }</span>
           )}
         </div>
 

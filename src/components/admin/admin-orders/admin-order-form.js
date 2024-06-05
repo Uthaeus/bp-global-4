@@ -7,7 +7,6 @@ import { storage } from "../../../firebase";
 
 import { OrdersContext } from "../../../store/orders-context";
 import Button from "../../ui/button";
-import { storage } from "../../../firebase";
 
 export default function AdminOrderForm({ order, user }) {
 

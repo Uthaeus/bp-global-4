@@ -40,8 +40,8 @@ export default function AdminUserForm({ user }) {
                     ...data,
                     created_at: formattedDate
                 }
-                await addUser(data);
-                console.log('adding user', data);
+                await addUser(newUser);
+                console.log('adding user', newUser);
             }
 
             navigate('/admin/users');
