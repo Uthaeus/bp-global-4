@@ -11,7 +11,7 @@ export default function AdminOrderModal({ image, onClose }) {
     return (
         <div className="admin-order-modal" onClick={closeModalHandler}>
             <div className="admin-order-modal-image-container">
-                <img src={image} alt="order-image" />
+                <img src={image.url} alt="order-image" />
                 <Button text="X" className="delete-button" onClick={onClose} />
             </div>
         </div>

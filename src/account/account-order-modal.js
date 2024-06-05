@@ -11,7 +11,7 @@ export default function AccountOrderModal({ image, onClose }) {
     return (
         <div className="account-order-modal" onClick={closeModalHandler}>
             <div className="account-order-modal-image-wrapper">
-                <img src={image} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
+                <img src={image.url} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
                 <Button text="X" className="delete-button" onClick={onClose} />
             </div>
         </div>

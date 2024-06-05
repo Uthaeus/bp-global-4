@@ -4,18 +4,16 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { UsersContext } from "../../../store/users-context";
 import { OrdersContext } from "../../../store/orders-context";
-import image from '../../../assets/images/overtime_image2_tn.jpg';
 
 import AdminOrderModal from "./admin-order-modal";
 import Button from "../../ui/button";
 
 export default function AdminOrderDetail() {
     const { id } = useParams();
-    const { orders } = useContext(OrdersContext);
+    const { orders, deleteOrder } = useContext(OrdersContext);
     const { users } = useContext(UsersContext);
     const [order, setOrder] = useState({});
     const [orderUser, setOrderUser] = useState({});
-    const [orderImages, setOrderImages] = useState([image, image, image]);
     const [modalImage, setModalImage] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -38,6 +36,11 @@ export default function AdminOrderDetail() {
         setModalOpen(false);
     }
 
+    const deleteOrderHandler = async () => {
+        await deleteOrder(id);
+        navigate(`/admin/users/${orderUser.id}`);
+    }
+
     return (
         <div className="admin-order-detail">
             {modalOpen && <AdminOrderModal image={modalImage} onClose={closeModalHandler} />}
@@ -58,16 +61,15 @@ export default function AdminOrderDetail() {
             <div className="admin-order-detail-divider" />
 
             <div className="admin-order-detail-body">
-
-                {orderImages.map((image, index) => (
+                {order.images?.map((image, index) => (
                     <div key={index} className="dummy-image" onClick={() => openModalHandler(image)}>
-                        <img src={image} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
+                        <img src={image.url} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
                     </div>
                 ))}
             </div>
 
             <div className="admin-order-detail-actions">
-                <Button text="Delete Order" className="delete-button mx-2" />
+                <Button text="Delete Order" className="delete-button mx-2" onClick={deleteOrderHandler} />
                 <Button text="Edit Order" className="edit-button mx-2" onClick={() => navigate(`/admin/orders/${id}/edit`)} />
                 <Button text="Back to Orders" className="mx-2" onClick={() => navigate('/admin/orders')} />
             </div>

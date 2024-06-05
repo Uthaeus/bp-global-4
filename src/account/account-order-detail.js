@@ -7,8 +7,6 @@ import { OrdersContext } from "../store/orders-context";
 import AccountOrderModal from "./account-order-modal";
 import Button from "../components/ui/button";
 
-import image from '../assets/images/overtime_image2_tn.jpg';
-
 export default function AccountOrderDetail() {
 
     const { id } = useParams();
@@ -18,8 +16,6 @@ export default function AccountOrderDetail() {
     const [modalOpen, setModalOpen] = useState(false);
 
     const navigate = useNavigate();
-
-    const orderImages = [image, image, image];
 
     useEffect(() => {
         const order = orders.find((order) => order.id.toString() === id.toString());
@@ -51,12 +47,12 @@ export default function AccountOrderDetail() {
 
             {orderImages.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
 
-            {orderImages.length > 0 && (
+            {order.images.length > 0 && (
                 <div className="account-order-detail-body">
 
-                    {orderImages.map((image, index) => (
+                    {order.images?.map((image, index) => (
                         <div key={index} className="account-order-detail-image-wrapper" onClick={() => openModalHandler(image)}>
-                            <img src={image} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
+                            <img src={image.url} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
                         </div>
                     ))}
                 </div>

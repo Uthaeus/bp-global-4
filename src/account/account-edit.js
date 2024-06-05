@@ -17,11 +17,15 @@ export default function AccountEdit() {
     const onSubmit = async (data) => {
 
         try {
-            updateUser(data);
+            const updatedUser = {
+                ...user,
+                ...data
+            }
+            updateUser(updatedUser);
+
+            navigate('/account');
         } catch (error) {
             console.log('update user error: ', error);
-        } finally {
-            navigate('/account');
         }
     }
 
