@@ -8,7 +8,7 @@ import { storage } from "../../../firebase";
 import { OrdersContext } from "../../../store/orders-context";
 import Button from "../../ui/button";
 
-export default function AdminOrderForm({ order, user }) {
+export default function AdminOrderForm({ order, orderUser }) {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [orderImages, setOrderImages] = useState([]);
@@ -22,7 +22,14 @@ export default function AdminOrderForm({ order, user }) {
             reset(order);
             setOrderImages(order.images || []);
         }
-    }, [order, reset]);
+        if (orderUser) {
+            console.log('setting order user', orderUser);
+            reset({
+                customer_name: orderUser.name,
+                uid: orderUser.id
+            })
+        }
+    }, [order, reset, orderUser]);
 
     const addImageHandler = async (event) => {
         const file = event.target.files[0];
@@ -69,9 +76,7 @@ export default function AdminOrderForm({ order, user }) {
                 const newOrder = {
                     ...data,
                     images: orderImages,
-                    created_at: formattedDate,
-                    uid: user.id,
-                    customer_name: user.name
+                    created_at: formattedDate
                 }
                 
                 addOrder(newOrder);
@@ -97,7 +102,8 @@ export default function AdminOrderForm({ order, user }) {
                 <div className="col-md-4">
                     <div className="form-group">
                         <label htmlFor="order_date">Order Date</label>
-                        <input type="date" id="order_date" className="form-control" {...register("order_date")} />
+                        <input type="date" id="order_date" className="form-control" {...register("order_date", { required: true })} />
+                        {errors.order_date && <span className="text-danger">Order Date is required</span>}
                     </div>
                 </div>
             </div>

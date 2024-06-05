@@ -20,7 +20,7 @@ export default function AdminOrderDetail() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const order = orders.find((order) => order.id.toString() === id.toString());
+        const order = orders.find((order) => order.id === id);
         const user = users.find((user) => user.id === order.uid);
         setOrder(order);
         setOrderUser(user);
@@ -54,7 +54,7 @@ export default function AdminOrderDetail() {
                 <div className="admin-order-detail-header-right">
                     <p className="admin-order-detail-header-item">Order Number: <span className="mx-2">{order.order_number}</span></p>
 
-                    <p className="admin-order-detail-header-order-date">Order Date: <span className="mx-2">{order.order_date}</span></p>
+                    <p className="admin-order-detail-header-order-date">Order Date: <span className="mx-2">{order.order_date || order.created_at}</span></p>
                 </div>
             </div>
 

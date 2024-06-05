@@ -9,21 +9,21 @@ import AdminOrderForm from "./admin-order-form";
 export default function AdminNewOrder() {
 
     const { users } = useContext(UsersContext);
-    const [user, setUser] = useState({});
+    const [orderUser, setOrderUser] = useState({});
     const { id } = useParams();
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        const u = users.find((user) => user.id.toString() === id.toString());
-        setUser(u);
+        const u = users.find((user) => user.id === id);
+        setOrderUser(u);
     }, [users, id]);
 
     return (
         <div className="admin-container">
             <h1 className="admin-title">Create New Order</h1>
 
-            <AdminOrderForm user={user} />
+            <AdminOrderForm orderUser={orderUser} />
 
             <div className="admin-container-actions">
                 <Button text="Back to Orders" className='secondary-button mx-2' onClick={() => navigate('/admin/orders')} />

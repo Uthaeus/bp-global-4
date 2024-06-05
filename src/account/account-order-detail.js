@@ -18,7 +18,7 @@ export default function AccountOrderDetail() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const order = orders.find((order) => order.id.toString() === id.toString());
+        const order = orders.find((order) => order.id === id);
         setOrder(order);
     }, [orders, id]); 
 
@@ -45,12 +45,12 @@ export default function AccountOrderDetail() {
                 <p className="account-order-detail-date">Order Date: <span className="mx-4">{order?.order_date}</span></p>
             </div>
 
-            {order.images.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
+            {order?.images.length === 0 && <p className="account-order-detail-empty">No images to display</p>}
 
-            {order.images.length > 0 && (
+            {order?.images.length > 0 && (
                 <div className="account-order-detail-body">
 
-                    {order.images?.map((image, index) => (
+                    {order?.images.map((image, index) => (
                         <div key={index} className="account-order-detail-image-wrapper" onClick={() => openModalHandler(image)}>
                             <img src={image.url} alt="order-image" style={{ width: '100%', height: '100%', objectFit: 'cover'}} />
                         </div>

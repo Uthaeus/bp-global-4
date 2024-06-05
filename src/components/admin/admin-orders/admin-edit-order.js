@@ -16,7 +16,7 @@ export default function AdminEditOrder() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const order = orders.find((order) => +order.id === +id);
+        const order = orders.find((order) => order.id === id);
         
         setOrder(order);
     }, [orders, id]);

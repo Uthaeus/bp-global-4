@@ -2,6 +2,9 @@ import { useForm } from "react-hook-form";
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase";
+
 import { UsersContext } from "../../../store/users-context";
 import Button from "../../ui/button";
 
@@ -34,11 +37,16 @@ export default function AdminUserForm({ user }) {
                     updated_at: formattedDate
                 }
                 await updateUser(updatedUser);
-                console.log('updating user', data);
+                await updateProfile(auth.currentUser, {
+                    displayName: data.name,
+                    email: data.email
+                })
+                console.log('updating user', updatedUser);
             } else {
                 const newUser = {
                     ...data,
-                    created_at: formattedDate
+                    created_at: formattedDate,
+                    role: 'user'
                 }
                 await addUser(newUser);
                 console.log('adding user', newUser);

@@ -46,7 +46,7 @@ const UserContextProvider = ({ children }) => {
 
     const updateUser = (data) => {
         console.log('update user method - user-context', data);
-        setUser({...user, ...data});
+        setUser(data);
         updateDoc(doc(db, 'users', user.id), data);
     }
 
